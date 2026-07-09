@@ -111,7 +111,7 @@ Status:
 
 ### site_photos
 
-Speichert Baustellenfotos.
+Speichert die Fotodokumentation einer Baustelle.
 
 Felder:
 
@@ -119,9 +119,36 @@ Felder:
 - organization_id
 - site_id
 - employee_id
+
+- photo_number
+  Laufende Nummer innerhalb der Baustelle
+
+- category
+  Kategorie des Fotos
+
+- location
+  Bereich oder Raum innerhalb der Baustelle
+
 - file_url
+
 - description
+
+- taken_at
+
+- latitude (optional)
+
+- longitude (optional)
+
 - created_at
+
+Mögliche Kategorien:
+
+- before_work
+- during_work
+- after_work
+- defects
+- material
+- other
 
 ---
 

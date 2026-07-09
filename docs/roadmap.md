@@ -111,7 +111,22 @@ Status: Geplant
 
 ### Ziel
 
-Baustellenfotos hochladen und anzeigen.
+Professionelle Fotodokumentation für Baustellen.
+
+### Inhalte
+
+- Fotos hochladen
+- Kategorien auswählen
+- Vor Arbeitsbeginn
+- Während der Arbeiten
+- Nach Fertigstellung
+- Mängel
+- Material
+- Sonstige
+- Galerieansicht
+- Bildbeschreibung
+- Vollbildansicht
+- später PDF-Dokumentation
 
 ---
 

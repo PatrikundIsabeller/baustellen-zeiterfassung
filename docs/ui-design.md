@@ -80,6 +80,42 @@ Weiße oder leicht abgesetzte Flächen mit klaren Abständen.
 - Admin-Ansicht darf detaillierter sein
 - Mitarbeiter-Ansicht muss extrem einfach sein
 
+## Fotodokumentation
+
+Die Fotodokumentation ist nach Kategorien gegliedert.
+
+Kategorien:
+
+- Vor Arbeitsbeginn
+- Während der Arbeiten
+- Nach Fertigstellung
+- Mängel
+- Material
+- Sonstige
+
+Die Darstellung erfolgt in einer Galerie mit Vorschaubildern.
+
+Jedes Bild zeigt zusätzlich:
+
+- Kategorie
+- Datum
+- Uhrzeit
+- Mitarbeiter
+- Beschreibung
+
+Ziel ist eine übersichtliche Projektdokumentation.
+
+Jede Fotokarte zeigt:
+
+- Vorschaubild
+- Bildnummer
+- Kategorie
+- Bereich / Raum
+- Mitarbeiter
+- Datum
+- Uhrzeit
+- Beschreibung
+
 ## Erste Kundendemo
 
 Die erste Demo soll auch mit Mock-Daten professionell wirken.

@@ -58,6 +58,7 @@ Die Anwendung soll zuerst als Webapp/PWA umgesetzt werden und später optional a
 - einfache Auswertung
 - mobile Bedienbarkeit
 - Foto-Upload je Baustelle
+- Fotodokumentation je Baustelle mit Kategorien
 
 ## Spätere Funktionen
 
@@ -73,6 +74,63 @@ Die Anwendung soll zuerst als Webapp/PWA umgesetzt werden und später optional a
 - Freigabeprozess
 - Mandantenfähigkeit für mehrere Firmen
 
-## Grundsatz
+## Fotodokumentation
+
+Fotos können folgenden Kategorien zugeordnet werden:
+
+- Vor Arbeitsbeginn
+- Während der Arbeiten
+- Nach Fertigstellung
+- Mängel
+- Material
+- Sonstige
+
+Zu jedem Foto können zusätzlich folgende Informationen gespeichert werden:
+
+Zu jedem Foto werden gespeichert:
+
+- laufende Bildnummer
+- Bereich / Raum
+- Beschreibung
+- Mitarbeiter
+- Datum
+- Uhrzeit
+- optionale GPS-Position
+
+## UX-Grundsätze
+
+BuildTrack unterscheidet zwischen zwei Benutzeroberflächen.
+
+### BuildTrack Office
+
+Für:
+
+- Administratoren
+- Bauleiter
+- Büro
+
+Diese Oberfläche darf detaillierter sein und bietet umfangreiche Verwaltungs- und Auswertungsfunktionen.
+
+### BuildTrack Field
+
+Für:
+
+- Mitarbeiter auf der Baustelle
+- einfache mobile Bedienung
+- Nutzer mit wenig Zeit
+- Nutzer mit unterschiedlichen Sprachkenntnissen
+
+Diese Oberfläche muss extrem einfach sein.
+
+Grundregeln:
+
+- maximal drei Klicks bis zur gewünschten Aktion
+- möglichst wenig Texteingaben
+- große Schaltflächen
+- klare Symbole
+- automatische Übernahme von Datum, Uhrzeit, Mitarbeiter und Baustelle
+- Pflichtfelder auf das Minimum reduzieren
+- Fotoaufnahme ohne komplizierte Zusatzangaben
+- einfache Begriffe wie Vorher, Während, Nachher und Mangel
 
 Die App muss extrem einfach bedienbar sein. Mitarbeiter sollen auf dem Handy ohne Einschulung Zeiten erfassen können.
