@@ -49,7 +49,7 @@ Die Anwendung soll später mehrere Unternehmen (Multi-Tenant) unterstützen.
 
 Status:
 
-🟡 In Bearbeitung
+🟢 Abgeschlossen
 
 #### Fertig
 
@@ -82,6 +82,7 @@ Office
 - Authentication
 - Baustellen
 - Mitarbeiter
+- Baustellenverwaltung
 
 ---
 
