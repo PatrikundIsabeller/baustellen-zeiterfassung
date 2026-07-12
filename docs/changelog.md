@@ -102,3 +102,17 @@ Abgeschlossen
 - Feature-Enums eingeführt
 - Trennung zwischen UI und Business-Logik verbessert
 - Erste wiederverwendbare UI-Komponenten erstellt
+
+
+## 2026-07-12
+
+### EPIC 2 – Datenbankbasis
+
+- Supabase Projekt erstellt
+- Migrationen eingeführt
+- Tabellen organisations und construction_sites erstellt
+- UUIDs implementiert
+- Soft Delete vorbereitet
+- Row Level Security aktiviert
+- Seed-Daten erstellt
+- Repository-/Service-Architektur vorbereitet

@@ -194,27 +194,48 @@ Jede neue Funktion muss:
 09.07.2026
 
 
-## EPIC 2 – Baustellenverwaltung
+# EPIC 2 – Baustellenverwaltung
 
-### Status
+## Status
 
-🟡 In Arbeit
+██████████████████░░ 80 %
 
 ### Fertig
 
-- Datenmodell
-- Mock-Daten
-- Kartenansicht
-- Suchfunktion
-- Statusfilter
-- Neue Baustelle (lokal)
-- InfoRow
-- EmptyState
+✔ Dashboard
 
-### Nächster Schritt
+✔ Navigation
 
-- SearchBox
-- StatusBadge
-- PageToolbar
-- Detailansicht Baustelle
-- Anbindung Supabase
+✔ Baustellenübersicht
+
+✔ Detailseite
+
+✔ Formulare
+
+✔ Dialoge
+
+✔ Validation Layer
+
+✔ Service Layer
+
+✔ Repository Layer
+
+✔ Supabase Datenbank
+
+✔ Migrationen
+
+✔ Seed Daten
+
+### Offen
+
+⬜ Supabase Repository
+
+⬜ Neue Baustelle speichern
+
+⬜ Detailseite dynamisch
+
+⬜ Bearbeiten
+
+⬜ Löschen
+
+⬜ Fotodokumentation
