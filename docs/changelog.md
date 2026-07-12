@@ -72,3 +72,33 @@ Datum: 09.07.2026
 - Trennung zwischen Office und Field festgelegt
 
 Abgeschlossen
+
+
+# Version 0.3.0-dev
+
+## EPIC 2 – Baustellenverwaltung (Teil 1)
+
+### Neu
+
+- Baustellen-Datenmodell eingeführt
+- Baustellenstatus zentral definiert
+- Mock-Daten für Baustellen erstellt
+- Baustellenkarten entwickelt
+- Baustellenlisten entwickelt
+- Baustellenübersicht erstellt
+- Suchfunktion integriert
+- Statusfilter integriert
+- Dialog zum Anlegen neuer Baustellen erstellt
+- Formularvalidierung mit Zod integriert
+- Lokales Hinzufügen neuer Baustellen umgesetzt
+
+### BuildTrack UI
+
+- InfoRow eingeführt
+- EmptyState eingeführt
+
+### Architektur
+
+- Feature-Enums eingeführt
+- Trennung zwischen UI und Business-Logik verbessert
+- Erste wiederverwendbare UI-Komponenten erstellt

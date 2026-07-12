@@ -192,3 +192,29 @@ Jede neue Funktion muss:
 # Letzte Aktualisierung
 
 09.07.2026
+
+
+## EPIC 2 – Baustellenverwaltung
+
+### Status
+
+🟡 In Arbeit
+
+### Fertig
+
+- Datenmodell
+- Mock-Daten
+- Kartenansicht
+- Suchfunktion
+- Statusfilter
+- Neue Baustelle (lokal)
+- InfoRow
+- EmptyState
+
+### Nächster Schritt
+
+- SearchBox
+- StatusBadge
+- PageToolbar
+- Detailansicht Baustelle
+- Anbindung Supabase
