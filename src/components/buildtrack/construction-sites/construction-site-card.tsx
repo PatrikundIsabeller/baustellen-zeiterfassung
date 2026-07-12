@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Building2, MapPin, Users } from "lucide-react";
 
 import type { ConstructionSite } from "@/features/construction-sites/construction-site.types";
@@ -11,7 +13,10 @@ type Props = {
 
 export function ConstructionSiteCard({ site }: Props) {
   return (
-    <div className="rounded-3xl border bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+      <Link
+        href={`/construction-sites/${site.slug}`}
+        className="block rounded-3xl border bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
+      >
       <div className="flex items-start justify-between">
         <div>
           <h3 className="text-xl font-semibold">
@@ -42,6 +47,6 @@ export function ConstructionSiteCard({ site }: Props) {
           value={`${site.employeeCount} Mitarbeiter`}
         />
       </div>
-    </div>
+    </Link>
   );
 }

@@ -7,7 +7,6 @@ import { PageContainer } from "@/components/buildtrack/layout/page-container";
 import { PageSection } from "@/components/buildtrack/layout/page-section";
 import {
   Building2,
-  Camera,
   Clock3,
   FileWarning,
   Users,

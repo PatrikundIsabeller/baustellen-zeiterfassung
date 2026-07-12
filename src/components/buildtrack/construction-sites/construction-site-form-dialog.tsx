@@ -1,46 +1,49 @@
 "use client";
 
-import { useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+/**
+ * ==========================================================
+ * Component: ConstructionSiteFormDialog
+ * ==========================================================
+ *
+ * Zweck:
+ * Stellt das Baustellenformular innerhalb eines Dialogs dar.
+ *
+ * Verantwortlich für:
+ * - Dialog öffnen und schließen
+ * - Erzeugen einer neuen Baustelle aus Formularwerten
+ * - Übergabe der neuen Baustelle an die Elternkomponente
+ *
+ * Nicht verantwortlich für:
+ * - Darstellung der Eingabefelder
+ * - Formularvalidierung
+ * - Dauerhafte Speicherung
+ *
+ * Verwendet in:
+ * - ConstructionSitesOverview
+ *
+ * Abhängigkeiten:
+ * - ConstructionSiteForm
+ * - create-slug.ts
+ * - construction-site.types.ts
+ *
+ * Erstellt in:
+ * Version 0.3.0 (EPIC 2 – Baustellenverwaltung)
+ * ==========================================================
+ */
 
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+
+import { ConstructionSiteForm } from "./construction-site-form";
 
 import type { ConstructionSite } from "@/features/construction-sites/construction-site.types";
-
-const constructionSiteSchema = z.object({
-  name: z.string().trim().min(2, "Bitte einen Baustellennamen eingeben."),
-  projectNumber: z
-    .string()
-    .trim()
-    .min(2, "Bitte eine Projektnummer eingeben."),
-  customerName: z.string().trim().min(2, "Bitte einen Kunden eingeben."),
-  address: z.string().trim().min(2, "Bitte eine Adresse eingeben."),
-  postalCode: z.string().trim().min(3, "Bitte eine Postleitzahl eingeben."),
-  city: z.string().trim().min(2, "Bitte einen Ort eingeben."),
-  status: z.enum(["active", "paused", "completed", "archived"]),
-  employeeCount: z.coerce
-    .number()
-    .int()
-    .min(0, "Die Mitarbeiteranzahl darf nicht negativ sein."),
-  startDate: z.string().min(1, "Bitte ein Startdatum auswählen."),
-  managerName: z.string().trim().optional(),
-  notes: z.string().trim().optional(),
-});
-
-type ConstructionSiteFormValues = z.infer<typeof constructionSiteSchema>;
+import type { ConstructionSiteFormValues } from "@/features/construction-sites/construction-site.validation";
+import { createSlug } from "@/lib/text/create-slug";
 
 type ConstructionSiteFormDialogProps = {
   open: boolean;
@@ -48,44 +51,15 @@ type ConstructionSiteFormDialogProps = {
   onCreate: (site: ConstructionSite) => void;
 };
 
-const defaultValues: ConstructionSiteFormValues = {
-  name: "",
-  projectNumber: "",
-  customerName: "",
-  address: "",
-  postalCode: "",
-  city: "",
-  status: "active",
-  employeeCount: 0,
-  startDate: "",
-  managerName: "",
-  notes: "",
-};
-
 export function ConstructionSiteFormDialog({
   open,
   onOpenChange,
   onCreate,
 }: ConstructionSiteFormDialogProps) {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isSubmitting },
-  } = useForm<ConstructionSiteFormValues>({
-    resolver: zodResolver(constructionSiteSchema),
-    defaultValues,
-  });
-
-  useEffect(() => {
-    if (!open) {
-      reset(defaultValues);
-    }
-  }, [open, reset]);
-
-  function onSubmit(values: ConstructionSiteFormValues) {
+  function handleCreate(values: ConstructionSiteFormValues) {
     const newSite: ConstructionSite = {
       id: crypto.randomUUID(),
+      slug: createSlug(values.name),
       name: values.name,
       projectNumber: values.projectNumber,
       customerName: values.customerName,
@@ -101,7 +75,6 @@ export function ConstructionSiteFormDialog({
 
     onCreate(newSite);
     onOpenChange(false);
-    reset(defaultValues);
   }
 
   return (
@@ -116,161 +89,13 @@ export function ConstructionSiteFormDialog({
           </DialogDescription>
         </DialogHeader>
 
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="space-y-6"
-          noValidate
-        >
-          <div className="grid gap-5 md:grid-cols-2">
-            <FormField
-              label="Baustellenname"
-              error={errors.name?.message}
-            >
-              <Input
-                {...register("name")}
-                placeholder="z. B. Industriehalle Linz"
-              />
-            </FormField>
-
-            <FormField
-              label="Projektnummer"
-              error={errors.projectNumber?.message}
-            >
-              <Input
-                {...register("projectNumber")}
-                placeholder="z. B. BT-2026-004"
-              />
-            </FormField>
-
-            <FormField
-              label="Kunde"
-              error={errors.customerName?.message}
-            >
-              <Input
-                {...register("customerName")}
-                placeholder="Firmen- oder Kundenname"
-              />
-            </FormField>
-
-            <FormField label="Status" error={errors.status?.message}>
-              <select
-                {...register("status")}
-                className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-xs outline-none transition focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
-              >
-                <option value="active">Aktiv</option>
-                <option value="paused">Pausiert</option>
-                <option value="completed">Abgeschlossen</option>
-                <option value="archived">Archiviert</option>
-              </select>
-            </FormField>
-
-            <FormField
-              label="Straße und Hausnummer"
-              error={errors.address?.message}
-              className="md:col-span-2"
-            >
-              <Input
-                {...register("address")}
-                placeholder="z. B. Industriestraße 15"
-              />
-            </FormField>
-
-            <FormField
-              label="Postleitzahl"
-              error={errors.postalCode?.message}
-            >
-              <Input {...register("postalCode")} placeholder="4020" />
-            </FormField>
-
-            <FormField label="Ort" error={errors.city?.message}>
-              <Input {...register("city")} placeholder="Linz" />
-            </FormField>
-
-            <FormField
-              label="Startdatum"
-              error={errors.startDate?.message}
-            >
-              <Input type="date" {...register("startDate")} />
-            </FormField>
-
-            <FormField
-              label="Zugeordnete Mitarbeiter"
-              error={errors.employeeCount?.message}
-            >
-              <Input
-                type="number"
-                min={0}
-                {...register("employeeCount")}
-              />
-            </FormField>
-
-            <FormField
-              label="Bauleiter"
-              error={errors.managerName?.message}
-              className="md:col-span-2"
-            >
-              <Input
-                {...register("managerName")}
-                placeholder="Optional"
-              />
-            </FormField>
-
-            <FormField
-              label="Notizen"
-              error={errors.notes?.message}
-              className="md:col-span-2"
-            >
-              <Textarea
-                {...register("notes")}
-                placeholder="Optionale Informationen zur Baustelle"
-                rows={4}
-              />
-            </FormField>
-          </div>
-
-          <DialogFooter>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => onOpenChange(false)}
-            >
-              Abbrechen
-            </Button>
-
-            <Button type="submit" disabled={isSubmitting}>
-              Baustelle anlegen
-            </Button>
-          </DialogFooter>
-        </form>
+        <ConstructionSiteForm
+          key={open ? "open" : "closed"}
+          mode="create"
+          onSubmit={handleCreate}
+          onCancel={() => onOpenChange(false)}
+        />
       </DialogContent>
     </Dialog>
-  );
-}
-
-type FormFieldProps = {
-  label: string;
-  error?: string;
-  children: React.ReactNode;
-  className?: string;
-};
-
-function FormField({
-  label,
-  error,
-  children,
-  className,
-}: FormFieldProps) {
-  return (
-    <div className={className}>
-      <Label className="mb-2 block">{label}</Label>
-
-      {children}
-
-      {error && (
-        <p className="mt-1.5 text-xs font-medium text-red-600">
-          {error}
-        </p>
-      )}
-    </div>
   );
 }

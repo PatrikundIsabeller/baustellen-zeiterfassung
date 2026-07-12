@@ -2,6 +2,7 @@ import type { ConstructionSiteStatus } from "./construction-site.enums";
 
 export type ConstructionSite = {
   id: string;
+  slug: string;
   name: string;
   projectNumber: string;
   customerName: string;

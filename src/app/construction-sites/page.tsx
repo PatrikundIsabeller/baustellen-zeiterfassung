@@ -4,9 +4,11 @@ import { StatCard } from "@/components/buildtrack/cards/stat-card";
 import { ConstructionSitesOverview } from "@/components/buildtrack/construction-sites/construction-sites-overview";
 import { OfficePage } from "@/components/buildtrack/templates/office-page";
 
-import { constructionSites } from "@/features/construction-sites/construction-sites.data";
+import { constructionSiteService } from "@/features/construction-sites/construction-site.service";
 
-export default function ConstructionSitesPage() {
+export default async function ConstructionSitesPage() {
+  const constructionSites = await constructionSiteService.getAll();
+  
   const activeSites = constructionSites.filter(
     (site) => site.status === "active"
   ).length;

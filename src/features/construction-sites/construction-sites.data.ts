@@ -3,6 +3,7 @@ import type { ConstructionSite } from "./construction-site.types";
 export const constructionSites: ConstructionSite[] = [
   {
     id: "1",
+    slug: "industriehalle-linz",
     projectNumber: "BT-2026-001",
     name: "Industriehalle Linz",
     customerName: "Müller Bau GmbH",
@@ -16,6 +17,7 @@ export const constructionSites: ConstructionSite[] = [
   },
   {
     id: "2",
+    slug: "wohnanlage-wien",
     projectNumber: "BT-2026-002",
     name: "Wohnanlage Wien",
     customerName: "Wohnbau AG",
@@ -29,6 +31,7 @@ export const constructionSites: ConstructionSite[] = [
   },
   {
     id: "3",
+    slug: "schule-graz",
     projectNumber: "BT-2026-003",
     name: "Schule Graz",
     customerName: "Stadt Graz",
